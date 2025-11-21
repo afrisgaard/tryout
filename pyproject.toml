@@ -1,0 +1,62 @@
+[project]
+name = "tryout"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "narwhals>=2.12.0",
+]
+[dependency-groups]
+dev = [
+  "plotly>=6.3.1",
+  "pre-commit>=4.2.0",
+  "pyright>=1.1.402",
+  "pytest>=8.3.5",
+  "pytest-mock>=3.14.1",
+  "ruff>=0.13.1",
+  "statsmodels>=0.14.5",
+  "ty>=0.0.1a10",
+]
+
+[tool.ruff]
+src = ["appretio", "tests"]
+target-version = "py312"
+
+[tool.ruff.lint]
+extend-select = [
+  "TID252", # no relative imports
+  "UP006",  # non-pep585-annotation (use list[str] not List[str])
+  "FAST001", # no duplicate response models in fastapi routes
+  "FAST003", # no mismatch between path params and function params in fastapi routes
+  "W291",   # trailing-whitespace
+  "W292",   # end of file line
+  "RUF200", # check toml files that does not conform to the schema from the relevant specification
+  "D",      # pydocstyle, static analysis tool for checking compliance with Python docstring conventions
+  "DOC",    # pydoclint, docstring linter to check whether a docstring's sections (arguments, returns, raises, ...) match the function signature or function implementation
+  "I001",      # Import block is un-sorted or un-formatted
+]
+ignore = [
+  "D100",  # 	Missing docstring in public module
+  "D101", # Missing docstring in public class
+  "D102", # Missing docstring in public method
+  "D103",  # Missing docstring in public function
+  "D104", # Missing docstring in public package
+  "D106", # Missing docstring in public nested class
+  "D107", # Missing docstring in __init__
+  "D200",   # One-line docstring should fit on one line
+  "D202", # No blank lines allowed after function docstring
+  "D203", # 1 blank line required before class docstring
+  "D205",  # 1 blank line required between summary line and description
+  "D211", # No blank lines allowed before class docstring
+  "D212",  # Multi-line docstring summary should start at the first line
+  "D213", # Multi-line docstring summary should start at the first line
+  "D400", # First line should end with a period
+  "D401", # First line should be in imperative mood
+  "D410", # Missing blank line after section'
+  "D411", # Missing blank line before section
+  "D413", # Missing blank line after last section
+  "D415", # First line should not be over 72 characters
+  "D417", # Missing argument descriptions in docstring
+  "DOC201", # docstring-missing-returns
+  ]
